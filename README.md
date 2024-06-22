@@ -1,5 +1,7 @@
 # Super Mario Game Deployment on EKS
 
+[Live Project](http://a8140b2baab4e4202874e1e26d478b70-1877454674.us-east-1.elb.amazonaws.com/)
+
 ## Overview
 
 This project demonstrates the deployment of a Super Mario game application on Amazon EKS using Terraform for infrastructure as code. Follow the steps outlined to set up the environment, deploy the application, and manage resources.
