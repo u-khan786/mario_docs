@@ -1,6 +1,7 @@
 # Super Mario Game Deployment on EKS
 
 ---
+[Live Project](http://a8140b2baab4e4202874e1e26d478b70-1877454674.us-east-1.elb.amazonaws.com/)
 
 This project involves deploying a Super Mario game application on an Amazon EKS (Elastic Kubernetes Service) cluster. The deployment process is divided into several phases, each focusing on specific tasks to ensure a smooth and secure deployment.
 
