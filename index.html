@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Mario Project</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href="css/brands.min.css" rel="stylesheet">
+        <link href="css/solid.min.css" rel="stylesheet">
+        <link href="css/v4-font-face.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">Mario Project</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/u-khan786/Super-m-clone/edit/master/docs/index.md" class="nav-link">Edit on u-khan786/Super-m-clone
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#super-mario-game-deployment-on-eks" class="nav-link">Super Mario Game Deployment on EKS</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#purpose-and-scope" class="nav-link">Purpose and Scope</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#features-and-functionality" class="nav-link">Features and Functionality</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#technologies-used" class="nav-link">Technologies Used</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#installation-instructions" class="nav-link">Installation instructions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#summary-and-conclusion" class="nav-link">Summary and Conclusion</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#references-and-acknowledgments" class="nav-link">References and Acknowledgments</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="super-mario-game-deployment-on-eks">Super Mario Game Deployment on EKS</h1>
+<hr />
+<p><a href="http://a8140b2baab4e4202874e1e26d478b70-1877454674.us-east-1.elb.amazonaws.com/">Live Project</a></p>
+<p>This project involves deploying a Super Mario game application on an Amazon EKS (Elastic Kubernetes Service) cluster. The deployment process is divided into several phases, each focusing on specific tasks to ensure a smooth and secure deployment.</p>
+<h2 id="purpose-and-scope">Purpose and Scope</h2>
+<h3 id="purpose">Purpose</h3>
+<p>The purpose of this project is to demonstrate the deployment of a containerized application, specifically a Super Mario game, on Amazon Elastic Kubernetes Service (EKS). The project showcases a complete deployment lifecycle, including setup, security configuration, application deployment, monitoring, and cleanup. By following this guide, users will gain practical experience with key AWS services and tools such as EC2, IAM, Terraform, kubectl, and AWS CLI.</p>
+<h3 id="scope">Scope</h3>
+<p>This documentation is intended for DevOps engineers, cloud architects, and developers who are interested in deploying applications on Kubernetes using AWS EKS. The scope covers the following phases:</p>
+<ul>
+<li>Initial Setup and Deployment</li>
+<li>Security and IAM Configuration</li>
+<li>Application Deployment</li>
+<li>Monitoring and Validation</li>
+<li>Cleanup and Resource Management</li>
+</ul>
+<h3 id="infrastructure-as-code-iac-with-terraform">Infrastructure as Code (IaC) with Terraform</h3>
+<p>Terraform is used as the infrastructure as code (IaC) tool to provision and manage the AWS infrastructure required for this project. The Terraform configuration files will automate the creation of the EKS cluster, IAM roles, and policies, ensuring a repeatable and consistent deployment process.</p>
+<p>The documentation includes step-by-step instructions, command-line examples, and configuration details to ensure a successful deployment and management of the Super Mario game application on AWS EKS.</p>
+<h2 id="features-and-functionality">Features and Functionality</h2>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>Automated Infrastructure Setup</strong>: Provisioning of AWS resources using Terraform.</li>
+<li><strong>Secure Access Management</strong>: Configuration of IAM roles and policies to ensure secure access to AWS resources.</li>
+<li><strong>Containerized Application Deployment</strong>: Deployment of the Super Mario game application on Amazon EKS.</li>
+<li><strong>Load Balancer Integration</strong>: Exposure of the application via an AWS Load Balancer for high availability.</li>
+<li><strong>Monitoring and Validation</strong>: Verification and monitoring of the application's deployment status.</li>
+<li><strong>Resource Cleanup</strong>: Automated cleanup of AWS resources post-deployment.</li>
+</ul>
+<h3 id="key-functionalities">Key Functionalities</h3>
+<ol>
+<li><strong>EC2 Instance Setup</strong>: Launching an EC2 instance to serve as the initial setup environment.</li>
+<li><strong>Tool Installation</strong>: Installing necessary tools such as Terraform, AWS CLI, and kubectl on the EC2 instance.</li>
+<li><strong>IAM Role Configuration</strong>: Creating and attaching IAM roles and policies for secure access management.</li>
+<li><strong>Repository Cloning</strong>: Cloning the Git repository containing the application and Terraform configuration files.</li>
+<li><strong>EKS Cluster Deployment</strong>: Using Terraform to deploy the EKS cluster and related resources.</li>
+<li><strong>Application Deployment</strong>: Deploying the containerized Super Mario game on the EKS cluster.</li>
+<li><strong>Application Exposure</strong>: Exposing the application via a Kubernetes service and AWS Load Balancer.</li>
+<li><strong>Deployment Verification</strong>: Verifying the successful deployment and operation of the application.</li>
+<li><strong>Resource Cleanup</strong>: Deleting the Kubernetes deployment and destroying the EKS cluster to clean up resources.</li>
+</ol>
+<h2 id="technologies-used">Technologies Used</h2>
+<h3 id="aws-management-console">AWS Management Console</h3>
+<p>The AWS Management Console provides a web-based user interface to manage AWS services and resources. It is used for launching EC2 instances, managing IAM roles, and monitoring deployed resources.</p>
+<h3 id="ubuntu">Ubuntu</h3>
+<p>Ubuntu is a popular Linux distribution used as the operating system for the EC2 instance. It provides a stable and secure environment for installing and running the necessary tools.</p>
+<h3 id="windows">Windows</h3>
+<p>Windows is used as the development machine for setting up and managing the project before deploying it to the cloud environment.</p>
+<h3 id="aws-iam-identity-and-access-management">AWS IAM (Identity and Access Management)</h3>
+<p>IAM is used to create and manage AWS users and permissions. In this project, IAM roles and policies are configured to control access to EC2 and EKS resources securely.</p>
+<h3 id="terraform">Terraform</h3>
+<p>Terraform is an open-source infrastructure as code (IaC) tool used to define and provision the AWS infrastructure required for this project. Terraform configuration files automate the creation of the EKS cluster, IAM roles, and policies.</p>
+<h3 id="aws-cli-command-line-interface">AWS CLI (Command Line Interface)</h3>
+<p>The AWS CLI is a unified tool to manage AWS services from the command line. It is used for various tasks such as configuring the AWS environment and interacting with AWS services programmatically.</p>
+<h3 id="kubectl">kubectl</h3>
+<p>kubectl is the command-line tool for interacting with Kubernetes clusters. It is used to deploy, manage, and troubleshoot applications running on the EKS cluster.</p>
+<h3 id="docker">Docker</h3>
+<p>Docker is a platform for developing, shipping, and running applications in containers. The Super Mario game application is containerized using Docker and deployed on the EKS cluster.</p>
+<h3 id="git">Git</h3>
+<p>Git is a version control system used to manage the source code for the Super Mario game application and Terraform configuration files. The repository is cloned to the EC2 instance for deployment.</p>
+<h3 id="s3-simple-storage-service">S3 (Simple Storage Service)</h3>
+<p>Amazon S3 is used to store the Terraform state files. Storing the state files in S3 ensures consistency and enables collaboration in a team environment.</p>
+<h3 id="ssh-client">SSH Client</h3>
+<p>An SSH client is used to securely connect to the EC2 instance for setup and management. Common examples include the terminal application on Unix-based systems and PuTTY on Windows.</p>
+<h3 id="putty">PuTTY</h3>
+<p>PuTTY is a free and open-source terminal emulator, serial console, and network file transfer application used to connect to the EC2 instance from a Windows development machine.</p>
+<h3 id="visual-studio-code-vs-code">Visual Studio Code (VS Code)</h3>
+<p>Visual Studio Code is a source-code editor used for editing Terraform configurations, Dockerfiles, and other code related to the project. It provides extensions for syntax highlighting, code completion, and version control integration.</p>
+<h3 id="kubernetes">Kubernetes</h3>
+<p>Kubernetes is an open-source container orchestration system used to automate the deployment, scaling, and management of containerized applications. EKS (Elastic Kubernetes Service) is a managed Kubernetes service provided by AWS.</p>
+<h3 id="amazon-ec2-elastic-compute-cloud">Amazon EC2 (Elastic Compute Cloud)</h3>
+<p>Amazon EC2 provides scalable computing capacity in the AWS cloud. It is used to launch and manage virtual servers where the necessary tools for deployment are installed.</p>
+<h3 id="amazon-eks-elastic-kubernetes-service">Amazon EKS (Elastic Kubernetes Service)</h3>
+<p>Amazon EKS is a managed Kubernetes service that makes it easy to run Kubernetes on AWS without needing to install and operate your own Kubernetes control plane or nodes.</p>
+<h3 id="vpc-virtual-private-cloud">VPC (Virtual Private Cloud)</h3>
+<p>Amazon VPC enables you to launch AWS resources into a virtual network that you've defined. It provides complete control over your virtual networking environment, including selection of your own IP address range, creation of subnets, and configuration of route tables and network gateways.</p>
+<h3 id="node-groups">Node Groups</h3>
+<p>Node groups are a part of Amazon EKS and represent a group of worker nodes (EC2 instances) that are used to run Kubernetes pods. The nodes in a node group are managed as a single unit.</p>
+<h3 id="subnets">Subnets</h3>
+<p>Subnets are a range of IP addresses in your VPC. Subnets allow you to group resources based on security and operational needs. The EKS cluster is deployed within specific subnets.</p>
+<h3 id="terraform-cloud">Terraform Cloud</h3>
+<p>Terraform Cloud is a service provided by HashiCorp for remote Terraform execution, state management, and collaboration. It helps to securely store and manage the Terraform state files.</p>
+<h3 id="github-actions">GitHub Actions</h3>
+<p>GitHub Actions is a CI/CD platform that automates the build, test, and deployment pipeline. It is used to automate the process of building, testing, and deploying the Super Mario game application.</p>
+<h2 id="installation-instructions">Installation instructions</h2>
+<h3 id="launch-ubuntu-instance">Launch Ubuntu instance</h3>
+<ul>
+<li><strong>Sign in to AWS Console</strong>: Log in to your AWS Management Console.</li>
+<li><strong>Navigate to EC2 Dashboard</strong>: Go to the EC2 Dashboard by selecting “Services” in the top menu and then choosing “EC2” under the Compute section.</li>
+<li><strong>Launch Instance</strong>: Click on the “Launch Instance” button to start the instance creation process.</li>
+<li><strong>Choose an Amazon Machine Image (AMI)</strong>: Select an appropriate AMI for your instance. For example, you can choose Ubuntu image.</li>
+<li><strong>Choose an Instance Type</strong>: In the “Choose Instance Type” step, select t2.micro as your instance type. Proceed by clicking “Next: Configure Instance Details.”</li>
+<li><strong>Configure Instance Details</strong>: For “Number of Instances,” set it to 1 (unless you need multiple instances). Configure additional settings like network, subnets, IAM role, etc., if necessary. For “Storage,” click “Add New Volume” and set the size to 8GB (or modify the existing storage to 8GB). Click “Next: Add Tags” when you’re done.</li>
+<li><strong>Add Tags (Optional)</strong>: Add any desired tags to your instance. This step is optional, but it helps in organizing instances.</li>
+<li><strong>Configure Security Group</strong>: Choose an existing security group or create a new one. Ensure the security group has the necessary inbound/outbound rules to allow access as required.</li>
+<li><strong>Review and Launch</strong>: Review the configuration details. Ensure everything is set as desired.</li>
+<li><strong>Select Key Pair</strong>: Select “Choose an existing key pair” and choose the key pair from the dropdown. Acknowledge that you have access to the selected private key file. Click “Launch Instances” to create the instance.</li>
+<li><strong>Access the EC2 Instance</strong>: Once the instance is launched, you can access it using the key pair and the instance’s public IP or DNS.</li>
+</ul>
+<h3 id="clone-the-repo">Clone the Repo</h3>
+<pre><code class="language-sh">git clone https://github.com/u-khan786/Super-m-clone.git
+</code></pre>
+<h3 id="create-iam-role">Create IAM Role</h3>
+<ul>
+<li>Search for IAM in the search bar of AWS and click on roles.
+  <img alt="Search for IAM" src="pics/step2-pic1.avif" title="Search for IAM" /></li>
+<li>Click on Create Role
+  <img alt="Create Role" src="pics/step2-pic2.avif" title="Create Role" /></li>
+<li>Select entity type as AWS service
+  <img alt="entity type" src="pics/step2-pic3.avif" title="entity type" /></li>
+<li>For permission policy select Administrator Access (Just for learning purpose), click Next.
+  <img alt="Administrator Access" src="pics/step2-pic4.avif" title="Administrator Access" /></li>
+<li>Provide a Name for Role and click on Create role.
+  <img alt="Name" src="pics/step2-pic5.avif" title="Name" /></li>
+<li>Role is created.
+  <img alt="created" src="pics/step2-pic6.avif" title="created" /></li>
+<li>Now Attach this role to Ec2 instance that we created earlier, so we can provision cluster from that instance.</li>
+<li>Go to EC2 Dashboard and select the instance.</li>
+<li>Click on Actions –&gt; Security –&gt; Modify IAM role.
+  <img alt="Actions" src="pics/step2-pic7.avif" title="Actions" /></li>
+<li>Select the Role that created earlier and click on Update IAM role.
+  <img alt="Select the Role" src="pics/step2-pic8.avif" title="Select the Role" /></li>
+<li>Connect the instance to Mobaxtreme or Putty</li>
+</ul>
+<h3 id="install-tools">Install tools</h3>
+<p>These steps ensure that necessary tools for managing infrastructure (Terraform), Kubernetes clusters (kubectl), and AWS resources (AWS CLI) are installed and configured on your system. Adjust paths and commands based on specific system requirements or preferences.</p>
+<pre><code class="language-sh">cd /tmp
+</code></pre>
+<pre><code class="language-sh"># Install Terraform
+sudo apt install wget -y  # Install wget if not already installed
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg # Download and add HashiCorp GPG key
+echo &quot;deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main&quot; | sudo tee /etc/apt/sources.list.d/hashicorp.list # Add HashiCorp repository to apt sources list
+sudo apt update &amp;&amp; sudo apt install terraform -y # Update package index and install Terraform
+</code></pre>
+<p>This section installs Terraform by adding HashiCorp's official GPG key to verify package integrity and adding their APT repository. After updating the package index, it installs Terraform automatically.</p>
+<pre><code class="language-sh"># Install kubectl
+sudo apt update # Update package index
+sudo apt install curl -y # Install curl if not already installed
+curl -LO https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl # Download the latest stable version of kubectl
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl # Install kubectl binary to /usr/local/bin/
+kubectl version --client # Verify kubectl installation and display client version
+</code></pre>
+<p>This segment installs kubectl, the Kubernetes command-line tool, by downloading the latest stable version for Linux amd64 architecture. It then installs it globally so it can be accessed from any directory and verifies the installation by displaying the client version.</p>
+<pre><code class="language-sh"># Install AWS CLI
+curl &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot; -o &quot;awscliv2.zip&quot; # Download AWS CLI installation archive
+sudo apt-get install unzip -y # Install unzip utility if not already installed
+unzip awscliv2.zip # Unzip the AWS CLI installation archive
+sudo ./aws/install # Run the AWS CLI installation script
+</code></pre>
+<p>This part installs the AWS Command Line Interface (CLI) by downloading the installation archive, extracting it, and running the installation script. The AWS CLI allows you to interact with various AWS services from the command line.</p>
+<pre><code class="language-sh"> aws --version &amp;&amp; kubectl version --client &amp;&amp; terraform --version
+</code></pre>
+<ul>
+<li>aws --version: Displays the version of AWS CLI installed on your system.</li>
+<li>kubectl version --client: Displays the client version of kubectl installed on your system, which is used to interact with Kubernetes clusters.</li>
+<li>terraform --version: Displays the version of Terraform installed on your system, used for provisioning and managing infrastructure as code.</li>
+</ul>
+<h3 id="cluster-provision">Cluster provision</h3>
+<pre><code class="language-sh">cd /home/ubuntu/Super-m-clone
+</code></pre>
+<ul>
+<li>Run Terraform init</li>
+</ul>
+<pre><code class="language-sh">terraform init
+</code></pre>
+<p><img alt="terraform" src="pics/step3-pic1.png" title="terraform" /></p>
+<blockquote>
+<p>NOTE: Don’t forgot to change the s3 bucket name and aws region name in the infrastructure.tf file</p>
+</blockquote>
+<ul>
+<li>Now run terraform validate and terraform plan</li>
+</ul>
+<pre><code class="language-sh">terraform validate
+terraform plan
+</code></pre>
+<p><img alt="validate" src="pics/step3-pic2.png" title="validate" />
+<img alt="plan" src="pics/step3-pic3.png" title="plan" /></p>
+<ul>
+<li>Now Run terraform apply to provision cluster.</li>
+</ul>
+<pre><code class="language-sh">terraform apply --auto-approve
+</code></pre>
+<p><img alt="apply" src="pics/step3-pic3.png" title="apply" /></p>
+<blockquote>
+<p>NOTE: Completed in 2/3 mins</p>
+</blockquote>
+<ul>
+<li>Update the Kubernetes configuration</li>
+</ul>
+<pre><code class="language-sh">aws eks update-kubeconfig --name mario_cluster --region us-east-1
+</code></pre>
+<blockquote>
+<p>NOTE: Make sure change your desired region</p>
+</blockquote>
+<h3 id="deployment">Deployment</h3>
+<pre><code class="language-sh">kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+kubectl get all
+kubectl describe service mario-service
+</code></pre>
+<p><img alt="mario" src="pics/step4-pic1.avif" title="mario" /></p>
+<h2 id="summary-and-conclusion">Summary and Conclusion</h2>
+<p>In this project, we successfully deployed the Super Mario game application on an Amazon EKS cluster using a detailed, step-by-step approach. We covered the following phases:</p>
+<ol>
+<li><strong>Initial Setup and Deployment:</strong> We launched an EC2 instance, installed necessary tools, and configured the environment.</li>
+<li><strong>Security and IAM Configuration:</strong> We created IAM roles and policies for the EKS cluster and node groups, ensuring secure and appropriate permissions.</li>
+<li><strong>Application Deployment:</strong> We cloned the repository, deployed the application using Terraform, and exposed it via a Load Balancer.</li>
+<li><strong>Monitoring and Validation:</strong> We verified the deployment and monitored the application's status using kubectl commands.</li>
+<li><strong>Cleanup and Resource Management:</strong> We deleted the application deployment and destroyed the EKS cluster and associated resources using Terraform.</li>
+</ol>
+<p>This project demonstrated the power and flexibility of AWS services, Terraform, and Kubernetes in deploying and managing scalable applications. By following this documentation, users can replicate the process and understand the key components involved in deploying containerized applications on EKS.</p>
+<p>The project also highlighted the importance of infrastructure as code (IaC) for automating deployments and managing infrastructure efficiently. With Terraform, we defined our infrastructure in a declarative manner, making the deployment process repeatable and version-controlled.</p>
+<p>Overall, this project serves as a practical example of modern DevOps practices and cloud-native application deployment, providing valuable insights into building and managing cloud infrastructure.</p>
+<h2 id="references-and-acknowledgments">References and Acknowledgments</h2>
+<h3 id="references">References</h3>
+<ol>
+<li>
+<p><strong>AWS Documentation</strong></p>
+</li>
+<li>
+<p><a href="https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html">Amazon EKS User Guide</a></p>
+</li>
+<li><a href="https://docs.aws.amazon.com/ec2/index.html">Amazon EC2 User Guide</a></li>
+<li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html">IAM Roles and Policies</a></li>
+<li>
+<p><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs">Terraform AWS Provider Documentation</a></p>
+</li>
+<li>
+<p><strong>Terraform Documentation</strong></p>
+</li>
+<li>
+<p><a href="https://www.terraform.io/docs/cli-index.html">Terraform CLI Documentation</a></p>
+</li>
+<li>
+<p><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs">Terraform AWS Provider</a></p>
+</li>
+<li>
+<p><strong>Kubernetes Documentation</strong></p>
+</li>
+<li>
+<p><a href="https://kubernetes.io/docs/home/">Kubernetes Documentation</a></p>
+</li>
+<li>
+<p><a href="https://kubernetes.io/docs/reference/kubectl/">kubectl Documentation</a></p>
+</li>
+<li>
+<p><strong>GitHub Actions Documentation</strong></p>
+</li>
+<li><a href="https://docs.github.com/en/actions">GitHub Actions</a></li>
+</ol>
+<h3 id="acknowledgments">Acknowledgments</h3>
+<ul>
+<li><strong>Open Source Contributors</strong> for maintaining and enhancing the tools and frameworks used in this project, including Terraform, Kubernetes, and AWS CLI.</li>
+<li><strong>Community Forums and Support</strong> for invaluable assistance and resources available to troubleshoot and optimize various aspects of the deployment process.</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.6.0
+Build Date UTC : 2024-06-22 18:40:19.951931+00:00
+-->
