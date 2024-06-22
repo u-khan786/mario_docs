@@ -1,6 +1,8 @@
 # Super Mario Game Deployment on EKS
 
 [Live Project](http://a8140b2baab4e4202874e1e26d478b70-1877454674.us-east-1.elb.amazonaws.com/)
+[Project Docs](https://u-khan786.github.io/mario_docs/)
+
 
 ## Overview
 
